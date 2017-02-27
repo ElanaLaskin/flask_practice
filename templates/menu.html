@@ -1,0 +1,17 @@
+<html>
+<body>
+	<h3>{{restaurant.name}}</h3>
+	<ul>
+		{% for item in items %}
+		<li>
+			{{item.name}}
+			{{item.id}}
+			<br>
+			{{item.price}}
+			<br>
+			{{item.description}}
+		</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>
