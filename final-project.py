@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, jsonify
+from flask import Flask, render_template, url_for, request, redirect, jsonify, flash
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
@@ -43,6 +43,7 @@ def newRestaurant():
 		new_restaurant = Restaurant(name = (request.form['restaurant']))
 		session.add(new_restaurant)
 		session.commit()
+		flash('New Restaurant Created')
 		return redirect(url_for('showRestaurants'))
 	
 
