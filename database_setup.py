@@ -23,8 +23,8 @@ class Restaurant(Base):
 	name = Column(String(80), nullable=False)#this means that a row can't be created without this information
 	id = Column(Integer, primary_key=True)
 	user_id = Column(Integer, ForeignKey('user.id'))
-	user = relationship(User)
-
+	user = relationship(User, cascade="all, delete-orphan")
+	
 	@property
 	def serialize(self):
 		return {
@@ -56,6 +56,6 @@ class MenuItem(Base):
 		'course': self.course
 		}
 
-engine = create_engine('sqlite:///restaurantmenuwithusers.db')
+engine = create_engine('sqlite:///restaurantmenu.db')
 
 Base.metadata.create_all(engine)
